@@ -1,0 +1,246 @@
+% Esta é a classe para a produção de apresentações no LaTeX. Mais informações
+% sobre o uso do Beamer podem ser encontradas em:
+% * https://pt.overleaf.com/learn/latex/Beamer (Resumo em português)
+% * https://texdoc.org/serve/beamer/0 (Documentação oficial)
+\documentclass[11pt]{beamer}
+
+% Configurações do tema: existem várias opções disponíveis, como Madrid, Berlin,
+% Copenhagen, etc. Para mais informações, consulte a documentação do Beamer.
+\usetheme{Madrid}
+\usecolortheme{default} % default, beaver, seahorse
+\usefonttheme{default} %  structurebold, structuresmallcapsserif, serif, default
+
+% Cofigurações adicionais
+\setbeamertemplate{caption}[numbered] % Numeração das figuras
+\setbeamertemplate{frametitle continuation}{} % Separar as páginas de 
+% referências sem contagem romana.
+
+% Definição de pacotes
+\usepackage[portuguese]{babel} % Palavras automáticas em português
+\usepackage{graphicx} % Pacote para inserir figuras
+\usepackage{subfig} % Pacote ideal para subfiguras
+\usepackage[round,colon,sort]{natbib} % Pacote para referências bibliográficas
+\usepackage{array} % Tamanho de colunas nas tabelas
+\usepackage{xcolor} % Cores personalizadas
+\usepackage{multirow} % Tabelas com multiplas linhas
+
+
+% Exemplo de definição de cor personalizada
+\definecolor{myblue}{HTML}{0071BC}
+
+% Título: a parte entre colchetes é o título que aparece na barra
+% superior ou inferior da apresentação, enquanto a parte entre chaves é o 
+% título que aparece na primeira página.
+\title[Trabalho de Conclusão de Curso]{Título do Trabalho de Conclusão de Curso}
+
+% Subtítulo: seu trabalho pode ter um subtítulo, que é opcional. Se não for
+% necessário, basta comentar a linha abaixo. Mas você pode colocar também
+% a ocasião da apresentação, como "Defesa de Trabalho de Conclusão de Curso".
+\subtitle{Defesa de Trabalho de Conclusão de Curso}
+
+% Autor: a parte entre colchetes é o autor que aparece na barra superior ou
+% inferior da apresentação, enquanto a parte entre chaves é o autor que aparece
+% na primeira página. Os comandos \inst{}'s servem para indicar a filiação
+% do autor, que é definida no comando \institute{}.
+\author[Tal]{Fulano de Tal\inst{1}}
+
+% Instituição: a parte entre colchetes é a instituição que aparece na barra
+% superior ou inferior da apresentação, enquanto a parte entre chaves é a
+% instituição que aparece na primeira página. Os comandos \inst{}'s servem
+% para espcificar a filiação do autor usada anteriormente. Para TCCs, você
+% pode usar o nome do colegiado do curso e da universidade. Para dissertações
+% e teses, você pode usar o nome do programa de pós-graduação e da universidade.
+\institute[Engenharia de Sistemas]{\inst{1}Colegiado do Curso de Graduação em 
+Engenharia de Sistemas\\Universidade Federal de Minas Gerais}
+
+% Data: a parte entre colchetes é a data que aparece na barra superior ou
+% inferior da apresentação, enquanto a parte entre chaves é a data que aparece
+% na primeira página. Você pode especificar manualmente a data da apresentação
+% ou pode usar o comando \today que insere a data atual.
+\date[24/07/2013]{24 de julho de 2013}
+
+\begin{document}
+
+    % Página de título
+    \begin{frame}
+        % O uso da logo da UFMG é totalmente opcional.
+		\begin{flushright}
+			\includegraphics[scale=.15]{./figuras/ufmg}
+		\end{flushright}
+		\maketitle
+	\end{frame}
+
+    % Sumário
+    % Obs.: todo slide pode ter título e subtítulo. Não é obrigatório, mas pode
+    % ser útil para organizar a apresentação. Pode seguir, por exemplo, a
+    % definição das seções.
+    \begin{frame}{Sumário}{Estrutura da apresentação}
+		\tableofcontents[hideallsubsections]
+	\end{frame}
+
+    % Definição de Seções: toda definição de seção aparece automaticatimente no
+    % sumário.
+    \section{Introdução}
+
+        % Slide de introdução
+        \begin{frame}{Introdução}{Subtítulo da introdução}
+            Você pode escrever normalmente dentro do ambiente do frame. O Beamer
+            aceita todos os comandos do LaTeX, então você pode usar \textbf{negrito},
+            \textit{itálico}, \underline{sublinhado}, etc. Além disso, você pode
+            inserir figuras, tabelas, equações, etc.
+        \end{frame}
+
+        \begin{frame}{Introdução}{Como inserir tópicos}
+            Lista de tópicos também podem ser utilizados. Os comandos são os mesmos
+            do LaTeX, então você pode usar \texttt{itemize}, \texttt{enumerate} e
+            \texttt{description} para criar listas.
+            \begin{itemize}
+                \item Item 1
+                \item Item 2
+                \begin{itemize}
+                    \item Subitem 1
+                \end{itemize}
+                \item Item 3
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{Introdução}{Como inserir blocos de texto}
+            \begin{block}{Bloco de texto}
+                Este é um bloco de texto. Você pode usar blocos para destacar
+                informações importantes, como definições, teoremas, etc.
+            \end{block}
+            \begin{alertblock}{Bloco de texto de outra cor}
+                Este é um bloco de texto em outra cor.
+            \end{alertblock}
+            \begin{examples}{Bloco de texto de outra cor}
+                Este é um bloco de texto de exemplo.
+            \end{examples}
+        \end{frame}
+
+        \begin{frame}{Introdução}{Como inserir figuras}
+            Figuras também podem ser inseridas. A definição do tamanho das imagens
+            pode ser feita com o comando \texttt{scale}. No entanto, às vezes
+            pode ser interessante definir o tamanho da figura em relação ao texto.
+            Por exemplo, \texttt{width=.5\textbackslash textwidth} significa que a
+            figura terá metade da largura do texto.
+            \begin{figure}
+                \centering
+                \includegraphics[scale=.4]{./figuras/ufmg}
+                \caption{Logo da UFMG}
+            \end{figure}
+        \end{frame}
+
+        \begin{frame}{Introdução}{Como controlar espaçamentos}
+            Às vezes pode ser necessário controlar espaçamentos entre os elementos
+            da apresentação. Isso pode ser feito com o comando \texttt{vspace}.
+            \vspace{1cm}
+
+            Assim você pode aumentar a quebra de parágrafos ou a distância entre
+            elementos. Também vale valores negativos, os quais diminuem o espaçamento.
+        \end{frame}
+
+        \begin{frame}{Introdução}{Como inserir tabelas}
+            \begin{table}
+                \centering
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                    \textbf{Coluna 1} & \textbf{Coluna 2} & \textbf{Coluna 3} \\
+                    \hline
+                    1 & 2 & 3 \\
+                    4 & 5 & 6 \\
+                    7 & 8 & 9 \\
+                    \hline
+                \end{tabular}
+                \caption{Exemplo de tabela}
+            \end{table}
+        \end{frame}
+
+        \begin{frame}{Introdução}{Como inserir equações}
+            Todos os ambientes de equações do LaTeX podem ser utilizados no Beamer.
+            Isso inclui \texttt{equation}, \texttt{align}, \texttt{gather}, \texttt{multline},
+            \texttt{eqnarray}, etc.
+            \begin{equation}
+                \label{eq:exemplo}
+                f(x) = x^2 + 2x + 1
+            \end{equation}
+            A equação \eqref{eq:exemplo} é um exemplo de equação quadrática.
+            \begin{eqnarray}
+                f(x) & = & x^2 + 2x + 1 \nonumber \\
+                & = & (x + 1)^2
+            \end{eqnarray}
+        \end{frame}
+
+        \begin{frame}{Introdução}{Como controlar o tamanho do texto}
+            É bem possível que, às vezes, você precise diminuir ou aumenter o 
+            tamanho do texto. Isso pode ser feito com os comandos \texttt{tiny},
+            \texttt{scriptsize}, \texttt{footnotesize}, \texttt{small}, \texttt{normalsize},
+            \texttt{large}, \texttt{Large}, \texttt{LARGE}, \texttt{huge} e \texttt{Huge}.
+            Aqui vão alguns exemplos:
+            \begin{itemize}
+                \item \tiny{Texto em tamanho tiny}
+                \item \scriptsize{Texto em tamanho scriptsize}
+                \item \footnotesize{Texto em tamanho footnotesize}
+                \item \small{Texto em tamanho small}
+            \end{itemize}
+
+        \end{frame}
+    
+    \section{Desenvolvimento}
+    
+            \begin{frame}{Desenvolvimento}{Subtítulo do desenvolvimento}
+                O desenvolvimento é a parte principal do trabalho. Aqui você deve
+                apresentar os resultados obtidos, as análises feitas, as discussões
+                realizadas, etc.
+            \end{frame}
+
+            \begin{frame}{Desenvolvimento}{Como inserir subfiguras}
+                \begin{figure}
+                    \centering
+                    \subfloat[Subfigura 1]{\includegraphics[width=0.4\textwidth]{./figuras/ufmg}}
+                    \hspace{1cm}
+                    \subfloat[Subfigura 2]{\includegraphics[width=0.4\textwidth]{./figuras/ufmg}}
+                    \caption{Exemplo de subfiguras}
+                \end{figure}
+            \end{frame}
+
+            \begin{frame}{Desenvolvimento}{Como inserir referências bibliográficas}
+                \begin{itemize}
+                    \item \citet{moulin2022induction} é um exemplo de referência.
+                    \item \citep{torres2020neurocognitive} é outro exemplo de referência.
+                \end{itemize}
+            \end{frame}
+
+            \begin{frame}{Desenvolvimento}{Como inserir colunas}
+                \begin{columns}
+                    \begin{column}{0.5\textwidth}
+                        \begin{itemize}
+                            \item Pode ser que você precise de duas colunas.
+                            \item Nesse caso, você pode usar o ambiente \texttt{columns}.
+                            \item O ambiente \texttt{column} define o tamanho de cada coluna.
+                            \item Você pode usar \texttt{0.5\textbackslash textwidth} para metade da largura do texto. No caso de usar duas colunas.
+                        \end{itemize}
+                    \end{column}
+                    \begin{column}{0.5\textwidth}
+                        \begin{figure}
+                            \centering
+                            \includegraphics[width=0.8\textwidth]{./figuras/ufmg}
+                            \caption{Logo da UFMG}
+                        \end{figure}
+                    \end{column}
+                \end{columns}
+            \end{frame}
+
+    \section{Conclusão}
+
+        \begin{frame}{Conclusão}{Subtítulo da conclusão}
+            A conclusão é a parte final do trabalho. Aqui você deve apresentar
+            as conclusões obtidas, as contribuições do trabalho, as limitações
+            encontradas, as sugestões para trabalhos futuros, etc.
+        \end{frame}
+
+        \begin{frame}{Referências Bibliográficas}
+            \bibliographystyle{plainnat}
+            \bibliography{./referencias}
+        \end{frame}
+
+\end{document}
